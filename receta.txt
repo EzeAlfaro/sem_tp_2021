@@ -1,0 +1,12 @@
+cortar: ajo, perejil
+mezclar: ajo, perejil, huevo
+salando: sal
+agregando la carne: Carne de primera calidad
+rebozando la carne: pan rallado, carne, mezcla
+fritando: aceite, milanesa
+horneando: masa, aceite
+extras: lechuga, tomate, pepino
+Sanguche_listo: Sanguche SubwayArgento!
+
+
+
