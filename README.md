@@ -111,7 +111,24 @@ Una vez organizado el pseudocódigo, se comenzó a modificar el código base, f�
 
 Para una implementación más rápida, se eligió proceder con la implementación del código sin la interacción de los semáforos globales, ni las interacciones con archivos externos, una vez que se verificó el correcto funcionamiento, se procedió a generar la intervención por medio de los semáforos globales, su implementación fue sencilla y muy similar a los anteriores.
 
+## Lectura desde archivo
+
+Para la receta se genero un archivo con separadores, nuestro programa los reconoce y los divide entre acciones e ingredientes, para luego imprimirlos en sector correspondiente
+
+
+## Salida a archivo
+
+Se estableció la impresión de las acciones en el archivo de salida dentro de cada como parte integral de cada paso, por ende este archivo es abierto, modificado y cerrado cada vez que se termina de realizar una acción por algún equipo
+
+
+
+
 
 ## Bibliografía
 
 [https://parzibyte.me/blog/2019/10/16/escribir-archivo-con-c-usando-fprintf/](https://parzibyte.me/blog/2019/10/16/escribir-archivo-con-c-usando-fprintf/)
+
+[https://www.codingame.com/playgrounds/14213/how-to-play-with-strings-in-c/string-split](https://www.codingame.com/playgrounds/14213/how-to-play-with-strings-in-c/string-split)
+
+[https://www.gnu.org/software/libc/manual/html_node/I_002fO-Primitives.html](https://www.gnu.org/software/libc/manual/html_node/I_002fO-Primitives.html)
+
