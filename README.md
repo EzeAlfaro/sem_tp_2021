@@ -115,13 +115,63 @@ Para una implementación más rápida, se eligió proceder con la implementació
 
 Para la receta se genero un archivo con separadores, nuestro programa los reconoce y los divide entre acciones e ingredientes, para luego imprimirlos en sector correspondiente
 
+```c
+FILE *archivo;
+	archivo = fopen("receta.txt", "r");
+	if (archivo == NULL)
+		{
+    	exit(EXIT_FAILURE); 
+	}
+	char * line = NULL;
+	size_t len = 0;
+	ssize_t read;
+	int linea=0;
+	while ((read = getline(&line, &len, archivo)) != -1) { 
+	int init_size = strlen(line);
+	int i = 0;
+	char *ptr = strtok(line,":");
+		while (ptr != NULL)
+		{
+			if(i ==0){
+				strcpy(pthread_data->pasos_param[linea].accion, ptr);
+				ptr = strtok(NULL, ",");
+			}else{
+				strcpy(pthread_data->pasos_param[linea].ingredientes[i], ptr);
+				ptr = strtok(NULL, ",");
+			}
+			i++;
+		}	
+			linea++;
+    }
+    fclose(archivo);
+
+```
 
 ## Salida a archivo
 
 Se estableció la impresión de las acciones en el archivo de salida dentro de cada como parte integral de cada paso, por ende este archivo es abierto, modificado y cerrado cada vez que se termina de realizar una acción por algún equipo
 
+```c
+void* hornear(void *data) {
+	usleep( 20000);
+	char *accion = "horneando";
+	struct parametro *mydata = data;
+	sem_wait(&sem_horno);
+	printf("\tEQUIPO %d USANDO EL HORNO!\n\n",mydata->equipo_param);
+	imprimirAccion(mydata,accion);
+	usleep( 10000000);
+		FILE * salida = fopen("salida.txt", "a");
+	fputs("Equipo ", salida); 
+	fprintf(salida, "%d", mydata->equipo_param);
+	fputs(" TERMINO DE HORNEAR LOS PANES! \n\n", salida);
+	fclose(salida);
+	printf("\tEQUIPO %d PANES HORNEADOS!\n\n",mydata->equipo_param);
+  sem_post(&mydata->semaforos_param.sem_panListo);
+  sem_post(&sem_horno);
+  pthread_exit(NULL);
 
-
+}
+```
 
 
 ## Bibliografía
